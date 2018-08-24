@@ -11,8 +11,8 @@ int main()
 	int contPares = 0;
 	float promPos;
 	float promNeg;
-	int diferencia;
-
+	int maximo;
+	int flag = 0;
     int numero;
     char respuesta;
 
@@ -42,6 +42,11 @@ int main()
         {
             contPares++;
         }
+        if(flag == 0 || numero > maximo)
+        {
+            maximo = numero;
+            flag= 1;
+        }
 
         printf("Desea ingresar otro numero? s/n ");
         setbuf(stdin,NULL);
@@ -49,9 +54,8 @@ int main()
     }
     while(respuesta == 's');
 
-    promPos = sumaPos / contPos;
-	promNeg = sumaNeg / contNeg;
-	diferencia = contPos - contNeg;
+    promPos = (float)sumaPos / contPos;
+	promNeg = (float)sumaNeg / contNeg;
 
     printf("La suma de los positivos es: %d\n", sumaPos);
     printf("La suma de los negativos es: %d\n", sumaNeg);
@@ -61,7 +65,7 @@ int main()
     printf("Cantidad de numeros pares: %d\n", contPares);
     printf("Promedio de positivos: %.2f\n", promPos);
     printf("Promedio de negativos: %.2f\n", promNeg);
-    printf("Diferencia entre positivos y negativos: %d\n", diferencia);
+    printf("Maximo %d\n", maximo);
 
     return 0;
 }
